@@ -1,10 +1,11 @@
 import { schemaProps } from "./formValidation";
-
+export type TFieldTypes = "text" | "number" | "select" | "password" | "email";
 export const fieldConfigs: Array<{
   label: string;
   name: keyof schemaProps;
-  type: "text" | "number" | "select" | "password" | "email";
+  type: TFieldTypes;
   placeholder?: string;
+  options?: { value: string; label: string }[];
 }> = [
   {
     name: "name",
@@ -29,7 +30,18 @@ export const fieldConfigs: Array<{
     label: "Age",
     type: "number",
     placeholder: "18+",
-  },
+    },
+    {
+      name: "availability",
+      label: "Availability",
+      type: "select",
+      placeholder: "Select availability",
+      options: [{ value: "full-time", label: "Full time" },
+        { value: "part-time", label: "Part time" },
+        { value: "weekends", label: "Weekends only" },
+      ],
+    }
+,    
   {
     name: "country",
     label: "Country",
@@ -53,5 +65,17 @@ export const fieldConfigs: Array<{
     label: "Aircraft Types Flown",
     type: "text",
     placeholder: " Boeing 737, Airbus A320...",
+    },
+  {
+    name: "gender",
+    label: "Gender",
+    type: "select",
+      options: [
+        { value: "other", label: "Other" },
+        { value: "male", label: "Male" },
+        { value: "female", label: "Female" },
+      ]
   },
+
+ 
 ];

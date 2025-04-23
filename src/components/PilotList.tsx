@@ -16,9 +16,15 @@ const PilotList = ({ pilots }: { pilots: schemaProps[] }) => {
             >
               <strong>{pilot.name}</strong> ({pilot.email})
               <br />
+              Gender: {pilot.gender}
+              <br />
               Age: {pilot.age}, Flight Experience: {pilot.flightExperience} yrs
               <br />
               Aircraft: {pilot.aircraftTypes}
+              <br />
+              Country: {pilot.country}
+              <br />
+              available : {pilot.availability}
             </li>
           ))}
         </ul>

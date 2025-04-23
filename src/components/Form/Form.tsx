@@ -2,8 +2,8 @@
 import { useForm } from "react-hook-form";
 import { schema, schemaProps } from "./formValidation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Input from "../ui/Input";
-import { fieldConfigs } from "./fieldConfigs";
+import Input from "../Field/Field";
+import { fieldConfigs } from "./formConfigs";
 
 export function Form({ onSubmit }: { onSubmit: (data: schemaProps) => void }) {
   const {
@@ -15,8 +15,6 @@ export function Form({ onSubmit }: { onSubmit: (data: schemaProps) => void }) {
     resolver: zodResolver(schema),
   });
   function submitForm(data: schemaProps) {
-    console.log(">>> ~ submitForm ~ data:", data);
-
     onSubmit(data);
     reset();
   }
@@ -35,10 +33,18 @@ export function Form({ onSubmit }: { onSubmit: (data: schemaProps) => void }) {
               label={field.label}
               error={errors?.[field.name]?.message}
               placeholder={field.placeholder}
+              options={field.options}
               {...register(field.name, {
                 setValueAs:
-                  field.type === "number"
-                    ? (v) => (v === "" ? undefined : Number(v))
+                  field.type === "number" || field.type === "text"
+                    ? (v) =>
+                        field.type === "text"
+                          ? v === ""
+                            ? undefined
+                            : v
+                          : v === ""
+                          ? undefined
+                          : Number(v)
                     : undefined,
               })}
             />
