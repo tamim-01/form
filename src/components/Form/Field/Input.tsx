@@ -1,5 +1,5 @@
 import React from "react";
-import { TFieldTypes } from "../Form/formConfigs";
+import { TFieldTypes } from "../formConfigs";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;

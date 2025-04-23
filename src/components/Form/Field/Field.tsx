@@ -1,5 +1,5 @@
 import React from "react";
-import { TFieldTypes } from "../Form/formConfigs";
+import { TFieldTypes } from "../formConfigs";
 import Input from "./Input";
 import Select from "./Select";
 interface FieldProps

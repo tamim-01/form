@@ -2,7 +2,7 @@
 import { useForm } from "react-hook-form";
 import { schema, schemaProps } from "./formValidation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Input from "../Field/Field";
+import Input from "./Field/Field";
 import { fieldConfigs } from "./formConfigs";
 
 export function Form({ onSubmit }: { onSubmit: (data: schemaProps) => void }) {
